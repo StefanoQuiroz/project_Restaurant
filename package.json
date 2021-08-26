@@ -1,0 +1,20 @@
+{
+  "name": "projectrestaurant",
+  "version": "1.0.0",
+  "description": "Simulación de un ecommerce utilizando un CRUD en el lado del back-end, y vistas de independientes de usuario y admin en el front-end.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StefanoQuiroz/project_Restaurant.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StefanoQuiroz/project_Restaurant/issues"
+  },
+  "homepage": "https://github.com/StefanoQuiroz/project_Restaurant#readme"
+}

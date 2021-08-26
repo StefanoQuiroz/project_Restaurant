@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 //import { MyContext } from '../App';
 import { FaBars,  FaTimes } from "react-icons/fa";
 import { GiCookingPot } from "react-icons/gi";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './Header.scss';
 
 const Header = () => {
+    const history = useHistory();
     //const value = useContext(MyContext);
     
     /* //Vista del NavBar Admin
@@ -29,10 +30,10 @@ const Header = () => {
         )
     } */
 
-    const onLogout = async () => {
+    const onLogout = async (e) => {
         e.preventDefault();
         localStorage.removeItem('user');
-        navigate('/');
+        history.push('/');
     }
 
     return (

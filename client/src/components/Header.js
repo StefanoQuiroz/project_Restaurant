@@ -2,23 +2,16 @@ import React, { useContext } from 'react';
 //import { MyContext } from '../App';
 import { FaBars,  FaTimes } from "react-icons/fa";
 import { GiCookingPot } from "react-icons/gi";
-<<<<<<< HEAD
-import { Link, navigate } from 'react-router-dom';
-=======
-import { Link, useHistory } from 'react-router-dom';
->>>>>>> main
+import {Route, Switch, Link, useHistory} from "react-router-dom";
 import axios from 'axios';
 import './Header.scss';
 import UserContext from "../context/userContext";
 
 const Header = () => {
-<<<<<<< HEAD
 
     const context = useContext(UserContext);
-=======
     const history = useHistory();
     //const value = useContext(MyContext);
->>>>>>> main
     
     /* //Vista del NavBar Admin
     const adminNavBar = () => {

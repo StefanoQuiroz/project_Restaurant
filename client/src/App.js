@@ -1,13 +1,19 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import UserContext from './context/userContext';
 import './App.scss';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import Header from './components/Header';
-import FoodLog from "../components/FoodLog";
-import FoodList from "../components/FoodList";
-import FoodEdit from "../components/FoodEdit";
+import Header from "./components/Header"
+import FoodLog from "./components/FoodLog"
+import FoodList from "./components/FoodList"
+import FoodEdit from "./components/FoodEdit"
+import Home from "./components/Home"
+import Menu from "./components/Menu"
+import Login from "./components/Login"
+import Register from "./components/Register"
 
 function App() {
 
+  const[listState, setListState] = useState([])
   const [users, setUsers] = useState({});
 
   useEffect(() => {

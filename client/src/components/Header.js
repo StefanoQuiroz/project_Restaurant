@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 //import { MyContext } from '../App';
 import { FaBars,  FaTimes } from "react-icons/fa";
 import { GiCookingPot } from "react-icons/gi";
-import { Link } from 'react-router-dom';
+import { Link, navigate } from 'react-router-dom';
 import axios from 'axios';
 import './Header.scss';
+import UserContext from "../context/userContext";
 
 const Header = () => {
-    //const value = useContext(MyContext);
+
+    const context = useContext(UserContext);
     
     /* //Vista del NavBar Admin
     const adminNavBar = () => {
@@ -42,8 +44,12 @@ const Header = () => {
                 <h1><Link to = {`/`}>Restaurante</Link></h1>
             </div>
             <ul>
-                <li><Link to={`/`}>Menu</Link></li>
-                <li><Link to={`/login`}>Login</Link></li>
+                <li><Link to={`/register`}>Registro Usuario</Link></li>
+                <li><Link to={`/login`}>Ingreso Administrador</Link></li>
+                {context.users.userType &&
+                  context.users.userType == "Admin" && (
+                <li><Link to={`/menu/list`}>Ver listado de menú</Link></li>
+                  )}
                 <li><Link onClick={onLogout} to={`/`}>Logout</Link></li>
                 <li><FaTimes className="menu"/></li>
             </ul>

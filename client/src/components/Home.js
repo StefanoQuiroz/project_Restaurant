@@ -4,7 +4,7 @@ const Home = () => {
     return (
         <div>
             <h1>Bienvenido</h1>
-            <Button>Ver menú</Button>
+            <Button><Link to={`/menu`}>Ver menú</Link></Button>
         </div>
     )
 }

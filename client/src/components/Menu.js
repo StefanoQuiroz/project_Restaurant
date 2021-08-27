@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Menu.css';
 import MenuItem from './MenuItem';
 
-import menu1 from '../images/menu-1.jpg';
-import menu2 from '../images/menu-2.jpg';
+
+/* import menu2 from '../images/menu-2.jpg';
 import menu3 from '../images/menu-3.jpg';
 import menu4 from '../images/menu-4.jpg';
 import menu5 from '../images/menu-5.jpg';
 import menu6 from '../images/menu-6.jpg';
 import menu7 from '../images/menu-7.jpg';
-import menu8 from '../images/menu-8.jpg';
+import menu8 from '../images/menu-8.jpg'; */
 
 
 import { Row,Col, Container } from 'reactstrap';
 
-export default function MenuComponent() {
+export default function MenuComponent(props) {
+  const {listState, setListState} = props;
+
   return (
     <Container className="menu" id="menu">
       <button className="btn logout">Logout</button>
@@ -24,17 +26,22 @@ export default function MenuComponent() {
       <Row>
         <h1 class="heading"> today's speciality </h1>
       </Row>
+      
       <Row className="row">
-        <Col sm={3} className="col" >
-          <MenuItem 
-              image={menu1} 
-              title="Special Pizza" 
-              description="Lorem Ipsum Dolor Sit, Amet Consectetur Adipisicing Elit. Excepturi, Accusantium."
-              price="$19.99"
-            />
-        </Col>
+        { listState && listState.map((item, index) => (
+          <Col sm={3} className="col" key={index}>
+            <MenuItem 
+                image={item.image} 
+                title={item.name} 
+                description={item.description}
+                price={item.price}
+              />
+          </Col>
 
-        <Col sm={3} className="col">
+        ))}
+        
+
+        {/* <Col sm={3} className="col">
           <MenuItem 
               image={menu2} 
               title="Cheeseburger" 
@@ -60,9 +67,9 @@ export default function MenuComponent() {
               price="$4.99"
             />
         </Col>
-
+ */}
       </Row>
-
+{/* 
       <Row className="row">
         <Col sm={3} className="col" >
           <MenuItem 
@@ -100,7 +107,7 @@ export default function MenuComponent() {
             />
         </Col>
 
-      </Row>
+      </Row> */}
       
       
      

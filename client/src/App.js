@@ -10,11 +10,32 @@ import Home from "./components/Home";
 import Menu from "./components/Menu";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 function App() {
 
   const [users, setUsers] = useState({});
   const [listState, setListState] = useState([]);
+
+  useEffect(() =>{
+    axios.get(`/api/menu`)
+    .then(response => setListState(response.data.data))
+    .catch(error => {
+      console.log("error", error);
+      Swal.fire({
+          icon:"error",
+          title: "Error en el Menu",
+          text: error
+      
+
+    })
+  }) 
+  }, [])
+
+  //console.log(listState);
+
+  
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -34,7 +55,7 @@ function App() {
                 <Home />
               </Route>
               <Route exact path={`/menu`}>
-                <Menu />
+                <Menu listState={listState} setListState={setListState} />
               </Route>
               <Route exact path={`/login`}>
                 <Login />
@@ -55,7 +76,8 @@ function App() {
         </Switch>
       </Router>
     </UserContext.Provider>
-  );
+  )
+
 }
 
 export default App;

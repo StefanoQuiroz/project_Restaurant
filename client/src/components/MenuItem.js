@@ -60,6 +60,7 @@ const FoodItemStyled = styled.div`
 `;
 
 export default function FoodItem({image,title,description,price}) {
+    
   return (
     <FoodItemStyled className="box">
       <div className="image">

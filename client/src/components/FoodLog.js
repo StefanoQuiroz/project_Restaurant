@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { Container, Row, Col, Form, FormGroup, FormText, Label, Input, Button} from 'reactstrap';
+import {Route, Switch, Link, useHistory} from "react-router-dom";
 import axios from 'axios';
 
 
@@ -10,6 +11,7 @@ const FoodLog = (props) => {
         description:"",
         category:"",
         price:"",
+        image: ""
     });
 
     const handleChangeForm = (e) => {
@@ -20,11 +22,17 @@ const FoodLog = (props) => {
         });
       };
 
+    const history = useHistory();
+    const list = (event) => {
+      history.push("/menu/list")
+    }
+
     const onSubmitForm = (event) => {
         event.preventDefault();
         axios.post('/api/menu/new', stateMenu)
         .then (res => {
             props.setListState( [...props.listState, res.data])
+            list(event);
         })
         .catch (error => {
             console.log("Error", error);
@@ -76,10 +84,10 @@ const FoodLog = (props) => {
                 <FormGroup>
                     <Label for="dishImage" sm={4}>Imagen del plato</Label>
                     <Col sm={8}>
-                        <Input type="file" name="image" id="dishImage"/>
+                        <Input type="text" name="image" id="dishImage" value={stateMenu.image} onChange = {handleChangeForm} style={{border: '2px solid black'}}/>
                         <Row>
                         <FormText color="muted">
-                            Subir imagen del plato o bebida.
+                            Subir link imagen del plato o bebida.
                         </FormText>
                         </Row>
                     </Col>
@@ -87,7 +95,7 @@ const FoodLog = (props) => {
 
                 <FormGroup row style={{padding: '1rem'}}>
                     <Col xs>
-                        <Button color="dark" size='lg' style={{width:'100%', color:'#fff' , fontWeight:'bold', border:'2px solid black'}} type="submit">Submit</Button>
+                        <Button color="dark" size='lg' style={{width:'100%', color:'#fff' , fontWeight:'bold', border:'2px solid black'}} type="submit">Crear nuevo menú</Button>
                     </Col>
                 </FormGroup>  
             

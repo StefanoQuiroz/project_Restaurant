@@ -3,8 +3,11 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+//const { userAdmin } = require('./controllers/users.controllers');
 
 const PORT = process.env.PORT;
+
+
 
 //calling mongoDB
 const connectMongo = require('./config/mongoose.config');
@@ -22,6 +25,8 @@ app.use(`/api`, require('./routes/users.routers'));
 ////MENUS
 app.use(`/api`, require('./routes/menus.routes'));
 
+//userAdmin();
+
 //MULTER
 const multer= require('multer');
 const upload = multer({dest: 'uploads/'});
@@ -36,3 +41,4 @@ app.post('/api/file', upload.single('file'), function(req, res, next){
 app.listen(PORT, ()=>{
     console.log(` 1 : The server is lock and loading at PORT: ${PORT}`);
 });
+

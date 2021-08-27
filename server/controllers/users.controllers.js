@@ -65,4 +65,4 @@ const login = (req, res) => {
 
 
 
-module.exports = {userAdmin, register, login};
+module.exports = { userAdmin, register, login};

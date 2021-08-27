@@ -1,0 +1,22 @@
+.menu{
+    background: #eee;
+    padding-top: 3rem;
+    margin-top: 4rem;
+    padding-bottom: 3rem;
+    margin-bottom: 4rem;
+    max-width: 100% !important;
+      
+  }
+  
+  .menu .row{
+    margin-left: 4.5rem;
+  }
+  
+  .menu .col{
+    padding: 0;
+  }
+  
+  .menu .logout{
+    float: right;
+    margin-right: 5rem;
+  }

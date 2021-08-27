@@ -6,11 +6,13 @@ import {Route, Switch, Link, useHistory} from "react-router-dom";
 import axios from 'axios';
 import './Header.scss';
 import UserContext from "../context/userContext";
+import { Button } from 'reactstrap';
 
 const Header = () => {
 
     const context = useContext(UserContext);
     const history = useHistory();
+
     //const value = useContext(MyContext);
     
     /* //Vista del NavBar Admin
@@ -33,8 +35,8 @@ const Header = () => {
         )
     } */
 
-    const onLogout = async (e) => {
-        e.preventDefault();
+    const onLogout = async (event) => {
+        event.preventDefault();
         localStorage.removeItem('user');
         history.push('/');
     }
@@ -47,19 +49,26 @@ const Header = () => {
             </div>
             <ul>
                 <li><Link to={`/register`}>Registro Usuario</Link></li>
+
                 <li><Link to={`/login`}>Ingreso Administrador</Link></li>
-                {context.users.userType &&
-                  context.users.userType == "Admin" && (
+
+                {context.users.rol &&
+                  context.users.rol == "Admin" && (
                 <li><Link to={`/menu/list`}>Ver listado de menú</Link></li>
                   )}
-                <li><Link onClick={onLogout} to={`/`}>Logout</Link></li>
+
+                {context.users.rol &&
+                  context.users.rol == "Admin" && (
+                <li><Link to={`/menu/new`}>Crear nuevo menú</Link></li>
+                  )}
+
+                <li><Button onClick={onLogout} to={`/`}>Logout</Button></li>
+
                 <li><FaTimes className="menu"/></li>
             </ul>
             <div className="cartIcon">
                 <span>0</span>
-                <Link to={`/cart`}>
                     <GiCookingPot style={{fontSize: "1.8rem"}}/>
-                </Link>    
             </div>     
         </header>
     );

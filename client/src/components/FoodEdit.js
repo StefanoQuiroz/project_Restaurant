@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Container, Row, Col, Form, FormGroup, FormText, Label, Input, Button} from 'reactstrap';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 const FoodEdit = (props) => {
 
@@ -28,12 +28,18 @@ const FoodEdit = (props) => {
     });
   };
 
-  const updateMenu = (e) => {
-    e.preventDefault();
+  const history = useHistory();
+    const list = (event) => {
+      history.push("/menu/list")
+    }
+
+  const updateMenu = (event) => {
+    event.preventDefault();
     axios
       .put(`/api/menu/update/${id}`, stateMenu)
       .then((res) => {
         console.log("Edición Realizada");
+        list(event)
       })
       .catch((error) => {
         console.log("Error", error);
@@ -95,7 +101,7 @@ const FoodEdit = (props) => {
 
             <FormGroup row style={{padding: '1rem'}}>
                 <Col xs>
-                    <Button color="dark" size='lg' style={{width:'100%', color:'#fff' , fontWeight:'bold', border:'2px solid black'}} type="submit">Submit</Button>
+                    <Button color="dark" size='lg' style={{width:'100%', color:'#fff' , fontWeight:'bold', border:'2px solid black'}} type="submit">Editar plato seleccionado</Button>
                 </Col>
             </FormGroup>  
         

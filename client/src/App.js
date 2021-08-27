@@ -12,8 +12,9 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 
 function App() {
+
   const [users, setUsers] = useState({});
-  const [listState, setListState] = useState({});
+  const [listState, setListState] = useState([]);
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
@@ -29,7 +30,6 @@ function App() {
             <header className="App-header">
               <Header />
             </header>
-            <body>
               <Route exact path={`/`}>
                 <Home />
               </Route>
@@ -51,7 +51,6 @@ function App() {
               <Route exact path="/menu/edit/:id">
                 <FoodEdit />
               </Route>
-            </body>
           </div>
         </Switch>
       </Router>

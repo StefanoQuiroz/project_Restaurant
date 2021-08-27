@@ -45,7 +45,7 @@ const Register = () => {
     axios
       .post(`/api/users/new`, user)
       .then((res) => {
-        if (res.data.error === true) {
+        if (res.data && res.data.data) {
             home(event);
             Swal.fire({
                 icon: "success",
@@ -84,7 +84,7 @@ const Register = () => {
                 <input type="password" name="password" value={registroForm.password} placeholder="Contraseña" onChange={onChange} required/>
                 <input type="password" name="confirmPassword" value={registroForm.confirmPassword} placeholder="Confirmar contraseña" onChange={onChange} required/>
                 <div className="row">
-                    <button type="submit">Registrarse</button>
+                <button type="submit">Registrarse</button>
                 </div>
             </form>
         </div>
